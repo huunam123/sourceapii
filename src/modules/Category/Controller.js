@@ -12,6 +12,7 @@ module.exports = class extends Controller{
 
 	async getTarget(req, res) {
         try {
+			// console.log(result)
 			let _result = {};
             const module = await this.db.find({query:{fq:`module:${req.params.module}`,limit:1}}).then(resp=>resp?.data?.[0]??{}).catch(e=>{});
 			if(module?.id){

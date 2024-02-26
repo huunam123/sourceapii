@@ -6,7 +6,7 @@ const {check} = require('express-validator');
 
 /* Application */
 const Controller = require('./Controller');
-const Function = new Controller('logs');
+const Function = new Controller('news');
 
 module.exports=method=>{
 	let _validation = [];

@@ -15,24 +15,5 @@ const { formatEmail, extractBase64 } = require("@utils/Helper");
 module.exports = class extends Controller {
   constructor(tableName) {
     super(tableName);
-  }
-
-  // ---------- GENERAL ----------//
-  async create(req, res) {
-    try {
-        // Validate
-        const _check = await this.validate(req, res);
-
-        if (_check == false) {
-            let _data = {};
-            _data = req.body;
-            _data.created_at = new Date();
-            _data.updated_at = new Date();
-            this.db.insert(_data);
-            this.response(res, 200, _data);
-        }
-    } catch (e) {
-        this.response(res, 500, e.message);
-    }
-} 
-};
+  } 
+} ;

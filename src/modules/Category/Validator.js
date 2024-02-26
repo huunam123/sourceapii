@@ -6,7 +6,7 @@ const {check} = require('express-validator');
 
 /* Application */
 const Controller = require('./Controller');
-const Function = new Controller('logs');
+const Function = new Controller('category');
 
 module.exports=method=>{
 	let _validation = [];
@@ -21,7 +21,7 @@ module.exports=method=>{
 			break;
 		case 'delete':
 			_validation = [
-				check('id','Trường Id là bắt buộc').not().isEmpty()
+				check('status','Trường status là bắt buộc').not().isEmpty()
 			]
 			break;
 		case 'deleteAll':

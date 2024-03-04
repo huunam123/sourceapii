@@ -21,7 +21,7 @@ module.exports=method=>{
 			break;
 		case 'delete':
 			_validation = [
-				check('status','Trường status là bắt buộc').not().isEmpty()
+				check('id','Trường Id là bắt buộc').not().isEmpty()
 			]
 			break;
 		case 'deleteAll':

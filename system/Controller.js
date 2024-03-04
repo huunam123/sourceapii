@@ -112,7 +112,7 @@ module.exports = class Controller {
 
     /* ------------ END COMMON ------------*/
 
-    /* ------------- API CRUD -------------*/
+    /* ------------- API CRUD -------------*/ // mẫu tạo 
     async getAll(req, res) {
         try {
             const _data = await this.db.find(req);

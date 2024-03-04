@@ -25,7 +25,7 @@ module.exports=method=>{
 			]
 			break;
 		case 'deleteAll':
-			_validation = [
+			_validation = [ 
 				check('ids','Trường Id là bắt buộc').not().isEmpty()
 			]
 			break;

@@ -36,6 +36,7 @@ try {
 	});
 	app.use(validateContentType());
 	app.use('/v1', routeService);
+	app.use('/public',express.static(path.join(__dirname,'/public')));
 
 	app.get('/', (req, res) => {
 		res.send('Hi ' + process.env.NODE_ENV + ' - version: 1.0.0');

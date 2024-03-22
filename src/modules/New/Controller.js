@@ -53,11 +53,48 @@ module.exports = class extends Controller {
         }
     }
 
+    async update(req, res) {
+        try {
+            // Validate
+            const _check = await this.validate(req, res);
+            if (_check == false) {
+                let _data = {};
+                _data = req.body;
+                _data.updated_at = new Date();
+                if ((_data?.image)) {
+                    try {
+                        const _year = this.moment().format('YYYY');
+                        const _month = this.moment().format('MM');
+                        const _parse = extractBase64(_data.image.file);
+
+                        if (!_parse) {
+                            return this.response(res, 500, 'Failed to parse image data');
+                        }
+
+                        const _name = `/${nanoid()}.${_parse.ext}`;
+                        const imagePath = path.join('/public/upload/news_images', _name); 
+                        await this.uploadFileLocal(_data.image,imagePath);
+                        _data.image = imagePath;
+                    } catch (e) {
+                        console.error(e);
+                        return this.response(res, 500, 'Upload failure, please try again');
+                    }
+                }
+                if(_data?.ended_at)
+                    _data.ended_at = new Date(_data.ended_at);
+                this.db.update({ id: req.params.id }, _data);
+                this.response(res, 200);
+            }
+        } catch (e) {
+            this.response(res, 500, e.message);
+        }
+    }
+
     async  uploadFileLocal(imageData,imagePath) {
         try {
             if (imageData && imagePath) {
                 const base64Data = imageData.file.replace(/^data:image\/\w+;base64,/, '');
-                const _dir =  "D:\\NETDEV\\mcv source baitap\\sourceMCCVV\\source\\sourceapii\\public0\\upload\\news_images" || path.resolve(process.env.DIR_UPLOAD, 'news_images');// đường dẫn lưu trữ ảnh 
+                const _dir =  "D:\\NETDEV\\mcv source baitap\\sourceMCCVV\\source\\sourceapii\\public\\upload\\news_images" || path.resolve(process.env.DIR_UPLOAD, 'news_images');// đường dẫn lưu trữ ảnh 
                 
                 if (!fs.existsSync(_dir)) fs.mkdirSync(_dir);
                 

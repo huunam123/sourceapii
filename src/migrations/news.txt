@@ -1,14 +1,14 @@
 CREATE TABLE IF NOT EXISTS news (
-   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-   `title` VARCHAR(255) NULL,                 //giá trị null cho cột title nếu không có giá trị được thêm vào
-   `category_id` INT(10) UNSIGNED NOT NULL,
-  `status` TEXT NOT NULL,
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NULL,
+  `category_id` INT(10) UNSIGNED NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` TIMESTAMP NULL DEFAULT NULL,
   `slug` VARCHAR(255) NOT NULL, 
   `image` VARCHAR(255) NOT NULL,
-  `category_name` VARCHAR(255) NOT NULL,
+  `content` TEXT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

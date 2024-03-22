@@ -57,7 +57,7 @@ module.exports = class extends Controller {
         try {
             if (imageData && imagePath) {
                 const base64Data = imageData.file.replace(/^data:image\/\w+;base64,/, '');
-                const _dir =  "D:\\NETDEV\\mcv source baitap\\sourceMCCVV\\source\\sourceapii\\public\\upload\\news_images" || path.resolve(process.env.DIR_UPLOAD, 'news_images');// đường dẫn lưu trữ ảnh 
+                const _dir =  "D:\\NETDEV\\mcv source baitap\\sourceMCCVV\\source\\sourceapii\\public0\\upload\\news_images" || path.resolve(process.env.DIR_UPLOAD, 'news_images');// đường dẫn lưu trữ ảnh 
                 
                 if (!fs.existsSync(_dir)) fs.mkdirSync(_dir);
                 

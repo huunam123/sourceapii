@@ -271,9 +271,6 @@ module.exports = class Controller {
                             })
                         }
                     }
-                    // console.log('insert',_inserts);
-                    // console.log('update',_updates);
-                    // console.log('delete',_deletes);
                     let _promises = [];
                     if(_updates.length > 0){
                         _promises = [..._promises,..._updates.map(_update=>{

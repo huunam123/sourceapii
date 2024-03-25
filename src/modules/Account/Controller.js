@@ -67,9 +67,7 @@ module.exports = class extends Controller {
   async checkNewPassword(val, req) {
     return new Promise((resolve, reject) => {
       const _conditions = {};
-      // email = req.body.email;
       _conditions.fq = `id:${req.params.id}`;
-      // console.log(req.body.email)
       this.db
         .get(_conditions, true)
         .then((result) => {

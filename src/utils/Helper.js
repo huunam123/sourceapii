@@ -316,7 +316,6 @@ class Helper {
             }
 
             const templateImage = await axios.get(invitation_data.templateImagePath, { responseType: 'arraybuffer' }).then((response) => {
-                // console.log(response)
                 const imageBuffer = Buffer.from(response.data, 'binary');
                 return imageBuffer
             })

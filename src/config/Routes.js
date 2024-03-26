@@ -56,6 +56,7 @@ fs.readdirSync(path.join(__dirname, '../modules')).map((module) => {
 router.route('/set-log').post((req, res) => { _Function.logs.create(req, res); });
 router.route('/pl-news').get((req, res) => { _Function.news.getAll(req, res); });
 
+
 //CMS & CMS
 router.route('/login').post(_Validator.accounts('login'), (req, res) => _Function.accounts.login(req, res));
 router.route('/token').post(_Validator.accounts('refresh'), (req, res) => _Function.accounts.refreshToken(req, res));
